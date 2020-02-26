@@ -21,8 +21,7 @@ PatternId:
 ;
 
 PatternStatement:
-    include=IncludeStatement | match=MatchStatement | compound=CompoundStatement |
-    matches_from_grammar=MatchFromGrammarStatement
+    IncludeStatement | MatchStatement | CompoundStatement | MatchFromGrammarStatement
 ;
 
 IncludeStatement:

@@ -197,18 +197,17 @@ class TextMateGrammarGenerator:
 
     def _generate_statements(self, label_set, statement_container, pattern):
         for statement in statement_container.statements:
-            if statement.include:
-                self._generate_include_statement(
-                    label_set, statement.include, pattern)
-            elif statement.match:
-                self._generate_match_statement(
-                    statement.match, pattern)
-            elif statement.compound:
-                self._generate_compound_statement(label_set,
-                                                  statement.compound, pattern)
-            elif statement.matches_from_grammar:
-                self._generate_matches_from_grammar_statement(
-                    statement.matches_from_grammar, pattern)
+            clsname = statement.__class__.__name__
+            if clsname == 'IncludeStatement':
+                self._generate_include_statement(label_set, statement, pattern)
+            elif clsname == 'MatchStatement':
+                self._generate_match_statement(statement, pattern)
+            elif clsname == 'CompoundStatement':
+                self._generate_compound_statement(label_set, statement,
+                                                  pattern)
+            elif clsname == 'MatchFromGrammarStatement':
+                self._generate_matches_from_grammar_statement(statement,
+                                                              pattern)
 
     def _generate_repository_patterns(self, label_set):
         all_patterns = []
