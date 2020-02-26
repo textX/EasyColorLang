@@ -1,10 +1,8 @@
 from os.path import join, dirname
-from textx import metamodel_from_file
+from textx import metamodel_for_language
 import json
-from textx import TextXSemanticError
 from ..utils import check_regex, raise_semantic_error, is_keyword,\
     load_jinja2_template, pretty_render
-from . import MODULE_DIR_PATH
 
 
 class TextMatePattern:
@@ -58,9 +56,8 @@ class TextXMateMatchFromGrammarStatement:
 
         self._set_match_config(matches_from_grammar)
 
-        textX = metamodel_from_file(join(
-            MODULE_DIR_PATH, "..", "grammar", "textX.tx"))
-        grammar_model = textX.model_from_file(self.grammar_path)
+        grammar_model = metamodel_for_language('textx')\
+            .grammar_model_from_file(self.grammar_path)
 
         terminals = self._get_terminals(grammar_model)
         self.keywords = [x for x in terminals if is_keyword(x)]
