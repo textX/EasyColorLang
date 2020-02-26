@@ -6,18 +6,14 @@ from .utils import dump_to_file
 
 @language('EasyColorLang', '*.eclr')
 def easy_coloring_lang():
-    """
-    Language made for easier writing of TextMate grammars
-    """
+    """Language made for easier writing of TextMate grammars"""
     return load_metamodel()
 
 
-@generator('EasyColorLang', 'textmate')
+@generator('EasyColorLang', 'TextMate')
 def textmate_gen_coloring(metamodel, model, output_path, overwrite, debug,
                           **custom_args):
-    """
-    Language made for easier writing of TextMate grammars
-    """
+    """Generator for TextMate syntax grammar from EasyColorLang spec"""
     ret_val = TextMateGrammarGenerator(model).generate()
     if not output_path:
         print(ret_val)

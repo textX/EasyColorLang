@@ -1,14 +1,13 @@
 import codecs
 import os
-from platform import python_version
 
 from setuptools import find_packages, setup
 
-PACKAGE_NAME = "syntax-coloring"
+PACKAGE_NAME = "EasyColorLang"
 VERSION = "0.1"
 AUTHOR = "Igor Majic"
 AUTHOR_EMAIL = "majic753@gmail.com"
-DESCRIPTION = "A syntax highlighting generator for any language"
+DESCRIPTION = "A syntax highlighting generator for any textX language"
 KEYWORDS = "textX DSL python all languages highlighting coloring"
 LICENSE = "MIT"
 URL = "https://github.com/IgorMaj/SyntaxColoring"
